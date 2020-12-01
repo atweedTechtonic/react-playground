@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Button from './Button';
 import heads from '../images/heads.png';
 import tails from '../images/tails.png';
 
@@ -39,8 +40,8 @@ const CoinFlipper = () => {
       <section>
         <p>Wins: {wins}</p>
         <p>Losses: {losses}</p>
-        <button onClick={() => callFlip('heads')}>Call Heads!</button>{' '}
-        <button onClick={() => callFlip('tails')}>Call Tails!</button>
+        <Button name="Call Heads!" handleClick={() => callFlip('heads')} />
+        <Button name="Call Tails!" handleClick={() => callFlip('tails')} />
       </section>
     </>
   );
