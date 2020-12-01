@@ -10,8 +10,8 @@ const CoinFlipper = () => {
   const [wins, setWins] = useState(0);
   const [losses, setLosses] = useState(0);
 
-  const callFlip = (e) => {
-    const call = e.target.getAttribute('data-call'); // getAttribute - gets value from button click
+  const callFlip = (playerCall) => {
+    const call = playerCall;
     const flip = Math.round(Math.random()) === 0 ? 'heads' : 'tails';
 
     setCall(call);
@@ -39,12 +39,8 @@ const CoinFlipper = () => {
       <section>
         <p>Wins: {wins}</p>
         <p>Losses: {losses}</p>
-        <button onClick={callFlip} data-call="heads">
-          Call Heads!
-        </button>{' '}
-        <button onClick={callFlip} data-call="tails">
-          Call Tails!
-        </button>
+        <button onClick={() => callFlip('heads')}>Call Heads!</button>{' '}
+        <button onClick={() => callFlip('tails')}>Call Tails!</button>
       </section>
     </>
   );
