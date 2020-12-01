@@ -1,0 +1,46 @@
+body {
+  background-color: #fefefe;
+  color: #333;
+}
+
+h1 {
+  text-align: center;
+}
+
+ul {
+  display: grid;
+  height: 100vh;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 24px;
+  justify-items: center;
+  list-style: none;
+}
+
+// card
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid black;
+  width: 350px;
+  height: 300px;
+  padding: 10px;
+  box-shadow: 0 8px 12px 0 rgba(0, 0, 0, 0.2);
+
+  &__title {
+  }
+
+  &__img {
+    width: 200px;
+  }
+
+  &__ingredients {
+    text-transform: capitalize;
+    text-align: center;
+  }
+
+  &__directions {
+    font-size: 25px;
+  }
+}
