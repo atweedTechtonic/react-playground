@@ -1,5 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
+import SearchForm from './SearchForm';
+import DisplayResults from './DisplayResults';
+import Spinner from './Spinner';
 const apiKey = '';
 // https://developers.giphy.com/docs/api#quick-start-guide
 
@@ -40,28 +43,8 @@ const GiphySearch = () => {
   return (
     <div className="wrapper">
       <h1>Random Giphy Searcher</h1>
-      <form onSubmit={updateSearchTerm}>
-        <div>
-          <label htmlFor="searchTerm">Search Term:</label>
-          <input
-            type="text"
-            id="searchTerm"
-            placeholder="Baby goat"
-            ref={inputRef} // connection to ref
-          />
-        </div>
-        <button type="submit">Search</button>
-      </form>
-      {url ? (
-        <section>
-          <img src={url} alt={title} />
-          <p>{title}</p>
-        </section>
-      ) : (
-        <div className="loading">
-          <i className="fa fa-spinner fa-spin fa-3x" aria-hidden="true" />
-        </div>
-      )}
+      <SearchForm inputRef={inputRef} updateSearchTerm={updateSearchTerm} />
+      {url ? <DisplayResults url={url} title={title} /> : <Spinner />}
     </div>
   );
 };
