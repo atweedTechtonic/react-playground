@@ -1,4 +1,5 @@
 import React, { useRef, useReducer } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
 const initialState = [];
 
@@ -8,7 +9,7 @@ const shoppingReducer = (state, action) => {
       return [
         ...state,
         {
-          id: state.length,
+          id: uuidv4(),
           product: action.product,
         }, // add id and product to shoppingList
       ];
