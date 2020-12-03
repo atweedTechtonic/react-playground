@@ -13,6 +13,9 @@ const shoppingReducer = (state, action) => {
           product: action.product,
         }, // add id and product to shoppingList
       ];
+    case 'DELETE':
+      console.log('action id', action.id);
+      return state.filter((item) => item.id !== action.id); // JIC {}
     default:
       return state;
   }
@@ -32,6 +35,14 @@ const ShoppingList = () => {
     console.log('shoppingList', shoppingList);
     inputRef.current.value = '';
   };
+
+  const removeShoppingItem = (id) => {
+    console.log(id);
+    dispatch({
+      type: 'DELETE',
+      id,
+    });
+  };
   return (
     <>
       <form onSubmit={handleSubmit}>
@@ -39,7 +50,10 @@ const ShoppingList = () => {
       </form>
       <ul>
         {shoppingList.map((item) => (
-          <li key={item.id}>{item.product}</li>
+          <li key={item.id}>
+            {item.product}
+            <button onClick={() => removeShoppingItem(item.id)}>Delete</button>
+          </li>
         ))}
       </ul>
     </>
