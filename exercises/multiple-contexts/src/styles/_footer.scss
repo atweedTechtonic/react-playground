@@ -1,0 +1,14 @@
+@import './variables';
+@import './mixins';
+
+.footer {
+  background-color: $dark-gray;
+  color: $off-white;
+  padding: 1rem 0;
+  text-align: center;
+
+  &--dark-mode {
+    background-color: $off-white;
+    color: $dark-gray;
+  }
+}

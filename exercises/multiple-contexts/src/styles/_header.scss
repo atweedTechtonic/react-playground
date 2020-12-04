@@ -1,0 +1,22 @@
+@import './variables';
+@import './mixins';
+
+.header {
+  @extend %flex-row-container;
+  align-items: center;
+  background-color: $dark-gray;
+  color: $off-white;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+
+  &--dark-mode {
+    background-color: $off-white;
+    color: $dark-gray;
+  }
+  h1 {
+    margin: 1rem 0;
+  }
+  span {
+    padding: 0 1rem;
+  }
+}

@@ -45,14 +45,13 @@ const App = () => {
 
   const toggleLoggedIn = () => {
     setUserData({ ...userData, loggedIn: !userData.loggedIn });
-    !userData.loggedIn ? setCount(count + 1) : null;
   };
 
   return (
     <div className="container">
       <ThemeContext.Provider value={{ theme, toggleTheme }}>
         <UserContext.Provider value={{ ...userData, toggleLoggedIn }}>
-          <CountContext.Provider value={count}>
+          <CountContext.Provider value={{ count, setCount }}>
             <Header />
             <MainContent />
           </CountContext.Provider>
