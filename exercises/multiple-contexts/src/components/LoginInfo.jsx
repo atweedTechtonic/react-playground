@@ -1,8 +1,10 @@
 import React, { useContext } from 'react';
 import UserContext from '../utils/UserContext';
+import CountContext from '../utils/CountContext';
 
 const LoginInfo = () => {
   const { username, loggedIn, toggleLoggedIn } = useContext(UserContext);
+  const count = useContext(CountContext);
 
   return (
     <p>
@@ -13,7 +15,11 @@ const LoginInfo = () => {
         {/* .toString() to output boolean as a string */}
         <strong>Logged In:</strong> {loggedIn.toString()}
       </span>
-      <button type="button" onClick={toggleLoggedIn}>
+      <button
+        type="button"
+        onClick={toggleLoggedIn}
+        disabled={count < 5 ? false : true}
+      >
         {loggedIn ? 'Log Out' : 'Log In'}
       </button>
     </p>

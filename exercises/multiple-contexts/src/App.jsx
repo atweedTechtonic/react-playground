@@ -4,6 +4,7 @@ import MainContent from './components/MainContent';
 import Footer from './components/Footer';
 import ThemeContext from './utils/ThemeContext'; // import context
 import UserContext from './utils/UserContext'; // import context
+import CountContext from './utils/CountContext';
 import API from './utils/API';
 
 const App = () => {
@@ -15,6 +16,8 @@ const App = () => {
     loggedIn: false,
     // note that toggleLoggedIn is not included until line 49
   });
+
+  const [count, setCount] = useState(0);
 
   useEffect(() => {
     API.getUserInfo()
@@ -42,14 +45,17 @@ const App = () => {
 
   const toggleLoggedIn = () => {
     setUserData({ ...userData, loggedIn: !userData.loggedIn });
+    !userData.loggedIn ? setCount(count + 1) : null;
   };
 
   return (
     <div className="container">
       <ThemeContext.Provider value={{ theme, toggleTheme }}>
         <UserContext.Provider value={{ ...userData, toggleLoggedIn }}>
-          <Header />
-          <MainContent />
+          <CountContext.Provider value={count}>
+            <Header />
+            <MainContent />
+          </CountContext.Provider>
         </UserContext.Provider>
         <Footer />
       </ThemeContext.Provider>
