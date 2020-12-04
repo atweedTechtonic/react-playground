@@ -4,7 +4,11 @@ import CountContext from '../utils/CountContext';
 
 const LoginInfo = () => {
   const { username, loggedIn, toggleLoggedIn } = useContext(UserContext);
-  const count = useContext(CountContext);
+  const { count, setCount } = useContext(CountContext);
+
+  const handleCount = () => {
+    loggedIn ? setCount(count + 1) : null;
+  };
 
   return (
     <p>
@@ -17,7 +21,10 @@ const LoginInfo = () => {
       </span>
       <button
         type="button"
-        onClick={toggleLoggedIn}
+        onClick={() => {
+          toggleLoggedIn();
+          handleCount();
+        }}
         disabled={count < 5 ? false : true}
       >
         {loggedIn ? 'Log Out' : 'Log In'}

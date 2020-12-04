@@ -5,7 +5,7 @@ import CountContext from '../utils/CountContext';
 
 const Header = () => {
   const { theme } = useContext(ThemeContext);
-  const count = useContext(CountContext);
+  const { count } = useContext(CountContext);
 
   return (
     <header className={`header ${theme === 'dark' ? 'header--dark-mode' : ''}`}>
