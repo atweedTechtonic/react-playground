@@ -16,6 +16,9 @@ const shoppingReducer = (state, action) => {
     case 'DELETE':
       console.log('action id', action.id);
       return state.filter((item) => item.id !== action.id); // JIC {}
+    case 'CLEAR_LIST':
+      // best way to clear out list?
+      return initialState;
     default:
       return state;
   }
@@ -43,8 +46,16 @@ const ShoppingList = () => {
       id,
     });
   };
+
+  const clearList = () => {
+    dispatch({
+      type: 'CLEAR_LIST',
+    });
+  };
+
   return (
     <>
+      <button onClick={() => clearList()}>Clear</button>
       <form onSubmit={handleSubmit}>
         <input ref={inputRef} />
       </form>
